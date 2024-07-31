@@ -20,6 +20,6 @@ const admSchema = new Schema({
   timestamps: true
 })
 
-const admUser = model<AdmUserProps>('adm-user', admSchema)
+const AdmUser = model<AdmUserProps>('adm-user', admSchema)
 
-export default admUser
+export default AdmUser
