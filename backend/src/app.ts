@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use('/create/admusers', router); // Corrigido para incluir a barra inicial
+app.use('/create', router); 
 
 mongoose.connect(process.env.MONGO_URI as string).then(() => {
   console.log(`Conectado com sucesso ao banco de dados`);

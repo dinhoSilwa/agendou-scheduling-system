@@ -1,21 +1,14 @@
 import { Schema, model } from "mongoose";
+import type { AdmUserProps } from "../@types/globaltypes";
 
-interface AdmUserProps {
-  name: string;
-  email: string;
-  password: string;
-  role: string,
-  avatar: string;
-  createdAt: Date;
-  updateAt: Date;
-
-}
 const admSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, required: true },
-  avatar: { type: String, required: true }
+  avatar: { type: String, required: false },
+  storename : {type : String, required : true},
+  storeType : {type : String, required : true},
 }, {
   timestamps: true
 })
