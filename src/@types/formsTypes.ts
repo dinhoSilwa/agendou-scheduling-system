@@ -6,3 +6,12 @@ export interface rolesProps {
 export interface businessTypesProps {
   type : string;
 }
+
+export interface AdminUserProps {
+  adiminame: string;
+  email: string;
+  password: string;
+  phone : string,
+  createdAt?: Date;
+  updateAt?: Date;
+}
