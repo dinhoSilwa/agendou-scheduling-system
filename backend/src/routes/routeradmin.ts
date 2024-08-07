@@ -1,5 +1,4 @@
 
-
 import { Router } from "express";
 import {createAdmin} from "../controllers/admcontrollers"
 
