@@ -3,8 +3,8 @@ export interface AdminUserProps {
   email: string;
   password: string;
   phone : string,
-  createdAt: Date;
-  updateAt: Date;
+  createdAt?: Date;
+  updateAt?: Date;
 }
 
 export interface AddressAdmProps {
