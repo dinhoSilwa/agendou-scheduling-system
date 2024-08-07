@@ -1,4 +1,4 @@
-import { FormRegister } from "./components/FormsResister"
+import { Home } from "./pages/home"
 
 
 function App() {
@@ -6,8 +6,7 @@ function App() {
 
   return (
 <>
-<span>login</span>
-<FormRegister />
+<Home />
 </>
   )
 }

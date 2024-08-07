@@ -1,4 +1,6 @@
-export const businessTypes = [
+import type { businessTypesProps, rolesProps } from "../@types/formsTypes";
+
+export const businessTypes :businessTypesProps [] = [
   { type: "Clínica médica" },
   { type: "Salão de beleza" },
   { type: "Consultório dentário" },
@@ -21,3 +23,8 @@ export const businessTypes = [
   { type: "Escola de música" }
 ];
 
+
+export const userRole : rolesProps[] = [
+  { role: "Adiministrador" },
+  { role: "Funcionário" },
+]
