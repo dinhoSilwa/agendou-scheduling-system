@@ -1,4 +1,4 @@
-import { Home } from "./pages/home"
+import { Sing } from "./pages/Singin"
 
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 
   return (
 <>
-<Home />
+<Sing />
 </>
   )
 }
