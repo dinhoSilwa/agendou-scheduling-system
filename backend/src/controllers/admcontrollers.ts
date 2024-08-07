@@ -5,9 +5,9 @@ import bcrypt from 'bcrypt';
 
 export const createAdmin = async (req : Request, res : Response) =>{
   try{
-    const {name, email, password} = req.body;
+    const {name, email, password, phone} = req.body;
     const hashedPassword = await bcrypt.hash(password, saltRounds)
-    const admuser = new AdminUser({name,email, password : hashedPassword});
+    const admuser = new AdminUser({name,email,phone, password : hashedPassword});
     await admuser.save()
     res.status(201).json(admuser);
   } catch(error : any){
