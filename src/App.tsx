@@ -1,4 +1,6 @@
-import { Sing } from "./pages/Singin"
+// import { Sing } from "./pages/Singin"
+
+import { Login } from "./pages/Login"
 
 
 function App() {
@@ -6,7 +8,8 @@ function App() {
 
   return (
 <>
-<Sing />
+ {/* <Sing /> */}
+ <Login />
 </>
   )
 }

@@ -15,3 +15,11 @@ export interface AdminUserProps {
   createdAt?: Date;
   updateAt?: Date;
 }
+
+export interface AdminUserLoginProps {
+  
+  email: string;
+  password: string;
+  createdAt?: Date;
+  updateAt?: Date;
+}
