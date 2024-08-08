@@ -1,5 +1,5 @@
 export interface AdminUserProps {
-  name: string;
+  adminname: string;
   email: string;
   password: string;
   phone : string,
