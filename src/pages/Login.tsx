@@ -10,6 +10,7 @@ import { getAdminUser } from "../controllers/getadminusers";
 
 export const Login = () => {
 
+
   const [status, setStatus] = useState<string>("")
 
 
@@ -32,7 +33,10 @@ export const Login = () => {
   })
 
   const onSubmit = async (data: AdminUserLoginProps) => {
-    getAdminUser(data).then(() => setStatus('Altenticado'))
+
+ getAdminUser(data).then(() => setStatus('Altenticado')
+  
+  )
     .catch((error) => {throw new Error(error), setStatus('Falha ao Altenticar')})
   }
 

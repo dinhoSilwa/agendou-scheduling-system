@@ -1,7 +1,15 @@
 import { BsBell, BsShop } from "react-icons/bs";
 import type { AddressProps } from "../@types/storetypes";
+import { altenticationStore } from "../store/adminstore";
+import { Navigate } from "react-router-dom";
 
 export const Home = () =>{
+
+  const {adminDetails} = altenticationStore()
+
+  if(adminDetails[0] === undefined){
+return <Navigate to={"/"} />
+  }
 
   interface Store {
     storename : string,
