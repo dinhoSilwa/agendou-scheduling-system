@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import AdminUser from "../models/adminuser";
 import bcrypt from 'bcrypt';
-import type { AdminUserProps } from "../@types/globaltypes";
-import { error } from "console";
  const saltRounds = 10;
 
 export const createAdmin = async (req : Request, res : Response) =>{
@@ -23,7 +21,13 @@ export const getAdmin = async (req : Request, res : Response) =>{
 try{
 
   const {email, password} = req.body
+
+  if(!email || !password){
+    return res.status(400).json({msg : "Email e senha são obrigatórios"})
+  }
+  
   const findAdminUser = await AdminUser.findOne({email})
+  console.log(findAdminUser)
 
   if(!findAdminUser){
     return res.status(404).json({error : "Email Não Encontrado"})

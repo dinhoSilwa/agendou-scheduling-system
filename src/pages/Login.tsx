@@ -5,9 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import type { AdminUserLoginProps } from "../@types/formsTypes";
 import React, { useState } from "react";
 import { ErrorField } from "../components/FormsResister/validationError";
+// import { getAdminUser } from "../controllers/getadminusers";
+import { getAdminUser } from "../controllers/getadminusers";
 
 export const Login = () => {
-
 
   const [status, setStatus] = useState<string>("")
 
@@ -30,10 +31,9 @@ export const Login = () => {
 
   })
 
-  const onSubmit = (data: AdminUserLoginProps) => {
-    console.log(data)
-    setStatus("Caregando....")
-    // createAdminUser(data).then(()=> setStatus("Sucesso")).catch((error) => setStatus(`Falha ao cadastrar ${error}`))
+  const onSubmit = async (data: AdminUserLoginProps) => {
+    getAdminUser(data).then(() => setStatus('Altenticado'))
+    .catch((error) => {throw new Error(error), setStatus('Falha ao Altenticar')})
   }
 
 
