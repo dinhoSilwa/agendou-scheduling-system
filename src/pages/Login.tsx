@@ -5,15 +5,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import type { AdminUserLoginProps } from "../@types/formsTypes";
 import React, { useState } from "react";
 import { ErrorField } from "../components/FormsResister/validationError";
-// import { getAdminUser } from "../controllers/getadminusers";
 import { getAdminUser } from "../controllers/getadminusers";
+import { authenticationStore, type AdminUserDetails } from "../store/adminstore";
+import { Home } from "./home";
+
 
 export const Login = () => {
+  const {add, adminDetails} = authenticationStore()
 
-
-  const [status, setStatus] = useState<string>("")
-
-
+console.log(adminDetails?.adminName)
   const signinValidation = Yup.object().shape({
 
     email: Yup.string()
@@ -34,10 +34,13 @@ export const Login = () => {
 
   const onSubmit = async (data: AdminUserLoginProps) => {
 
- getAdminUser(data).then(() => setStatus('Altenticado')
-  
+ await getAdminUser(data).then((res) => {
+const dbData : AdminUserDetails = res.data
+const {adminName , adminEmail} = dbData
+add(adminName, adminEmail)
+ }
   )
-    .catch((error) => {throw new Error(error), setStatus('Falha ao Altenticar')})
+    .catch((error) => {throw new Error(error)})
   }
 
 
@@ -54,8 +57,14 @@ export const Login = () => {
     }))
   }
 
+  if(adminDetails?.adminName){
+    return <Home />
+  }
+
+
   return (
     <>
+
   
       <form action=""
         className="flex flex-col w-1/2"
@@ -102,7 +111,7 @@ export const Login = () => {
         </button>
       </form>
 
-      {status}
+
     </>
   )
 }

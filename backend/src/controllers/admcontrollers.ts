@@ -27,7 +27,6 @@ try{
   }
   
   const findAdminUser = await AdminUser.findOne({email})
-  console.log(findAdminUser)
 
   if(!findAdminUser){
     return res.status(404).json({error : "Email Não Encontrado"})
@@ -38,7 +37,10 @@ try{
   if(!ismatch){
     return res.status(400).json({error : "Senha inválida"})
   }
-  return res.status(200).json({msg : "Usuário Altenticado com Sucesso"})
+  const adminName = findAdminUser.adminname
+  const adminEmail = findAdminUser.email
+
+  return res.status(200).json({adminName, adminEmail})
 
 
 }catch(error){

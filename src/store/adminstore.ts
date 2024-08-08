@@ -1,24 +1,21 @@
 import { create } from "zustand";
 
-interface AdminUserDetails {
-  name: string;
-  email: string;
+export interface AdminUserDetails {
+  adminName: string;
+  adminEmail: string;
 }
 
 interface AdmStoreProps {
-  adminDetails: AdminUserDetails[];
+  adminDetails: AdminUserDetails | null;
   add: (adminName: string, adminEmail: string) => void;
-  delete: (adminName: string) => void;
+  deleteAdmin: () => void;
 }
 
-export const altenticationStore = create<AdmStoreProps>((set) => ({
-  adminDetails: [],
+export const authenticationStore = create<AdmStoreProps>((set) => ({
+  adminDetails: null,
+  add: (adminName: string, adminEmail: string) => set({
+    adminDetails: { adminName, adminEmail }
+  }),
 
-  add: (adminName: string, adminEmail: string) => set((state) => ({
-    adminDetails: [...state.adminDetails, { name: adminName, email: adminEmail }]
-  })),
-
-  delete: (adminName: string) => set((state) => ({
-    adminDetails: state.adminDetails.filter((admin) => admin.name !== adminName)
-  }))
+  deleteAdmin: () => set({ adminDetails: null })
 }));
