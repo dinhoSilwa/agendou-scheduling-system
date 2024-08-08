@@ -7,23 +7,18 @@ import React, { useState } from "react";
 import { ErrorField } from "../components/FormsResister/validationError";
 import { createAdminUser } from "../controllers/creatadminuser";
 
-export const Sing = () => {
+export const Login = () => {
 
 
   const [status, setStatus] = useState<string>("")
 
 
   const signinValidation = Yup.object().shape({
-    adminname: Yup.string()
-      .required("Nome é obrigatório")
-      .min(8, "Nome deve ter pelo menos 8 caracteres")
-      .max(32, "Nome não pode ter mais de 32 caracteres"),
+
     email: Yup.string()
       .required("Email é obrigatório")
       .email("Email inválido"),
-    phone: Yup.string()
-      .required("Telefone é obrigatório")
-      .max(15, "Telefone não pode ter mais de 15 caracteres"),
+
     password: Yup.string()
       .required("Senha é obrigatória")
       .min(8, "Senha deve ter pelo menos 8 caracteres")

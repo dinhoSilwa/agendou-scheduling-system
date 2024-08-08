@@ -8,7 +8,7 @@ export interface businessTypesProps {
 }
 
 export interface AdminUserProps {
-  adiminame: string;
+  adminname: string;
   email: string;
   password: string;
   phone : string,
