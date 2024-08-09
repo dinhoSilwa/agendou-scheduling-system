@@ -6,7 +6,14 @@ export default {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      colors : {
+        "brandColor" : '#E4FF66'
+      },
+      fontFamily: {
+        'primary-outfit': ['Outfit', 'system-ui', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
