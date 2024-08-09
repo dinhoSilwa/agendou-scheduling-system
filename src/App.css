@@ -5,6 +5,7 @@
   text-align: center;
 }
 
-.animate-text-1{
-  animation: all 2s ease;
+.animation-scrool{
+  animation: fadeOut 2s forwards;
+  animation-timeline: scroll();
 }

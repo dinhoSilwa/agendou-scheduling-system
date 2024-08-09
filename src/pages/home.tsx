@@ -1,22 +1,26 @@
-import { BsBell, BsShop } from "react-icons/bs";
-import type { AddressProps } from "../@types/storetypes";
+
 import { authenticationStore } from "../store/adminstore";
 import { CreateNewComponente } from "../components/HomeBanner/banner";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { TiThMenu } from "react-icons/ti";
-import { FaBell } from "react-icons/fa";
 import { bannerBusiness, bannerSch, bannerServices } from "../models/bannersContent.tsx/bannerText";
 import { TbToolsOff } from "react-icons/tb";
 import { IoStorefront } from "react-icons/io5";
 import { IoIosTime } from "react-icons/io";
+import { MenuSup } from "../components/Menu/supermenu";
+import { useOpenToggle } from "../store/menustore";
 
 export const Home = () =>{
 
-  const {adminDetails, deleteAdmin} = authenticationStore()
+  const {adminDetails} = authenticationStore()
+  const {toggleIsOpen} = useOpenToggle()
+
 
   if(!adminDetails?.adminName){
     return <Navigate to={'/'} />
   }
+
+
   
   return(
 <>
@@ -31,11 +35,17 @@ export const Home = () =>{
 </article>
 
 <article className="flex gap-2">
-  <nav className="h-8 w-8 grid place-content-center bg-white rounded-full p-2" aria-label="navegação">
- <li className="list-none">
+  <nav className="h-8 w-8 grid place-content-center bg-white rounded-full p-2" aria-label="navegação"
+   onClick={toggleIsOpen}
+  >
+ <li className="list-none"
+
+ >
  <TiThMenu size={20} />
+
  </li>
   </nav>
+  <MenuSup/>
   {/* <FaBell /> */}
 
 

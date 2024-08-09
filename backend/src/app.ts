@@ -13,6 +13,10 @@ app.use(cors())
 app.use(express.json());
 app.use('/admin', routerAdmin)
 
+app.get('/', (req, res) => {
+  res.send("Hello World");
+});
+
 mongoose.connect(process.env.MONGO_URI as string).then(() => {
   console.log(`Conectado com sucesso ao banco de dados`);
   app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
