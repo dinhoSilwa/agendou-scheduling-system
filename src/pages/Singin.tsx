@@ -8,6 +8,7 @@ import { ErrorField } from "../components/FormsResister/validationError";
 import { createAdminUser } from "../controllers/creatadminuser";
 import { ButtonForms } from "../components/FormsResister/Button";
 import { HeaderForms } from "../components/FormsResister/HeaderForms";
+import { Link } from "react-router-dom";
 
 export const Sing = () => {
 
@@ -138,6 +139,12 @@ export const Sing = () => {
       </form>
 
       {status}
+
+      <section className="flex flex-col gap-[4px] my-2">
+          <p className="text-zinc-500 text-[14px] font-primary-outfit leading-[16px]">
+            tem login ? <Link to={"/"} title="link para área de Cadastro" role="cadastro" aria-label="link de Cadastro" className="font-bold">Entrar</Link>
+            </p>
+        </section>
 </section>
     </>
   )
