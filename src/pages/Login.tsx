@@ -18,7 +18,7 @@ import { LoadingPage } from "./loading";
 export const Login = () => {
   const { add, adminDetails, deleteAdmin } = authenticationStore()
   const navigate = useNavigate()
-const [isLoading, setisLoading] = useState(false)
+  const [isLoading, setisLoading] = useState(false)
   useEffect(() => {
     deleteAdmin()
   }, [])
@@ -47,19 +47,19 @@ const [isLoading, setisLoading] = useState(false)
 
     await getAdminUser(data).then((res) => {
 
-      setTimeout(() => {
-        const dbData: AdminUserDetails = res.data
-        const { adminName, adminEmail } = dbData
-        add(adminName, adminEmail)
-              setisLoading(false)
+      const dbData: AdminUserDetails = res.data
+      const { adminName, adminEmail } = dbData
+      add(adminName, adminEmail)
 
+      setTimeout(() => {
+        setisLoading(false)
+        navigate('/home')
       }, 3000);
 
-      navigate('/home')
     }
     )
       .catch((error) => { throw new Error(error) })
-      setisLoading(false)
+    setisLoading(false)
   }
 
 
@@ -85,14 +85,14 @@ const [isLoading, setisLoading] = useState(false)
   return (
     <>
 
-{
-  isLoading &&  <LoadingPage />
+      {
+        isLoading && <LoadingPage />
 
-}
+      }
 
       <section className=" w-full h-full grid place-content-center px-4 pt-8">
 
-          <HeaderForms title="Acessar sua conta" subtitle="Digite seu email e senha para acessar a plataforma." />
+        <HeaderForms title="Acessar sua conta" subtitle="Digite seu email e senha para acessar a plataforma." />
 
 
         <form action=""
@@ -143,7 +143,7 @@ const [isLoading, setisLoading] = useState(false)
         <section className="flex flex-col gap-[4px]">
           <p className="text-zinc-500 text-[14px] font-primary-outfit leading-[16px]">
             Ainda não tem login ? <Link to={"/cadastro"} title="link para área de Cadastro" role="cadastro" aria-label="link de Cadastro" className="font-bold">Cadastre-se</Link>
-            </p>
+          </p>
         </section>
       </section>
 

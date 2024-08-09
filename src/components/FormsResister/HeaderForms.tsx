@@ -13,7 +13,7 @@ export const HeaderForms = ({title, subtitle, ...props} : HeaderProps) =>{
   return(
     <>
     
-    <header className="flex h-24 flex-col gap-4" {...props}>
+    <header className="flex h-auto flex-col gap-4" {...props}>
           <figure>
             <img src={logo} alt="" className="w-[128px]" />
           </figure>

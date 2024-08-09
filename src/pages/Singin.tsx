@@ -64,7 +64,7 @@ export const Sing = () => {
   return (
     <>
 <section className="pt-10 px-4">
-<HeaderForms title="Criar Conta" subtitle="Adicione os seu dados Para criar a sua conta" />
+<HeaderForms title="Criar Conta" subtitle="Deixe que o Agendou cuide da sua agenda para que você possa focar no que realmente importa: atender seus clientes!" />
       <form action=""
         className="flex flex-col gap-4 mt-4"
         onSubmit={handleSubmit(onSubmit)}
