@@ -1,11 +1,14 @@
 import { BsBell, BsShop } from "react-icons/bs";
 import type { AddressProps } from "../@types/storetypes";
 import { authenticationStore } from "../store/adminstore";
+import { CreateNewBusinessBanner } from "../components/HomeBanner/banner";
+import { Link } from "react-router-dom";
 
 export const Home = () =>{
 
-  const {adminDetails} = authenticationStore()
+  const {adminDetails, deleteAdmin} = authenticationStore()
   console.log(adminDetails?.adminName)
+
 
   interface Store {
     storename : string,
@@ -32,9 +35,8 @@ export const Home = () =>{
       ]
     }
   ];
+
   
-
-
   return(
 <>
 <header className="flex items-center justify-between">
@@ -70,7 +72,9 @@ export const Home = () =>{
 </header>
     <main>
       ["Agendamentos"]
+      <CreateNewBusinessBanner />
     </main>
+    <Link to={'/'} onClick={deleteAdmin}>Sair</Link>
 </>
   )
 }

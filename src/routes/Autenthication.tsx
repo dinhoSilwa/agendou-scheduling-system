@@ -1,14 +1,13 @@
-import { Login } from "../pages/Login"
-import { Sing } from "../pages/Singin"
+import { Navigate, Outlet } from "react-router-dom"
 import { authenticationStore } from "../store/adminstore"
 
-export const Auth = () =>{
+export const ProtectedRoute = () =>{
   const { adminDetails} = authenticationStore()
 
   return(
   <>
     {
-      adminDetails?.adminName === null  ? <Sing /> : <Login />
+      adminDetails ? <Outlet /> : <Navigate to={'/home'} />
     }
   </>
   )
