@@ -5,6 +5,10 @@ import { CreateNewComponente } from "../components/HomeBanner/banner";
 import { Link, Navigate } from "react-router-dom";
 import { TiThMenu } from "react-icons/ti";
 import { FaBell } from "react-icons/fa";
+import { bannerBusiness, bannerSch, bannerServices } from "../models/bannersContent.tsx/bannerText";
+import { TbToolsOff } from "react-icons/tb";
+import { IoStorefront } from "react-icons/io5";
+import { IoIosTime } from "react-icons/io";
 
 export const Home = () =>{
 
@@ -39,22 +43,52 @@ export const Home = () =>{
 </header>
 
 
-<section>
-<article className="px-4">
-<h1 className="text font-bold font-primary-outfit text-[12px] mb-2">Estabelecimentos</h1>
+<section className="flex flex-col gap-6">
+  
+
+<article>
+<h1 className="pl-4 text font-bold font-primary-outfit text-[12px] mb-2">Estabelecimentos:</h1>
+{
+  bannerBusiness.map(({title, subtitle, action}, index) =>(
+    <CreateNewComponente IconElement={<IoStorefront />} title={title} subtitle={subtitle} action={action} key={index} />
+
+  ))
+}
 </article>
-<CreateNewComponente />
+
+<article >
+<h1 className="pl-4 text font-bold font-primary-outfit text-[12px] mb-2">Serviços:</h1>
+{
+  bannerServices.map(({title, subtitle, action}, index) =>(
+    <CreateNewComponente IconElement={<TbToolsOff />} title={title} subtitle={subtitle} action={action} key={index} />
+
+  ))
+}
+</article>
+
+<article >
+<h1 className="pl-4 text font-bold font-primary-outfit text-[12px] mb-2">Agendamentos:</h1>
+{
+  bannerSch.map(({title, subtitle, action}, index) =>(
+    <CreateNewComponente IconElement={<IoIosTime />} title={title} subtitle={subtitle} action={action} key={index} />
+
+  ))
+}
+</article>
+
+
+
+
+
+
+
+
+
+
+
 </section>
 
-<section>
-<article className="px-4">
-<h1 className="text font-bold font-primary-outfit text-[12px] mb-2">Serviços</h1>
-</article>
-<CreateNewComponente />
-</section>
 
-
-    <Link to={'/'} onClick={deleteAdmin}>Sair</Link>
 </main>
 </>
   )
