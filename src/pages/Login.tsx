@@ -46,15 +46,20 @@ const [isLoading, setisLoading] = useState(false)
     setisLoading(true)
 
     await getAdminUser(data).then((res) => {
-      const dbData: AdminUserDetails = res.data
-      const { adminName, adminEmail } = dbData
-      add(adminName, adminEmail)
-      setisLoading(false)
+
+      setTimeout(() => {
+        const dbData: AdminUserDetails = res.data
+        const { adminName, adminEmail } = dbData
+        add(adminName, adminEmail)
+              setisLoading(false)
+
+      }, 3000);
 
       navigate('/home')
     }
     )
       .catch((error) => { throw new Error(error) })
+      setisLoading(false)
   }
 
 
@@ -80,8 +85,10 @@ const [isLoading, setisLoading] = useState(false)
   return (
     <>
 
- <LoadingPage />
+{
+  isLoading &&  <LoadingPage />
 
+}
 
       <section className=" w-full h-full grid place-content-center px-4 pt-8">
 
