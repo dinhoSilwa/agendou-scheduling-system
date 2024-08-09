@@ -4,3 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
+
+.animate-text-1{
+  animation: all 2s ease;
+}
