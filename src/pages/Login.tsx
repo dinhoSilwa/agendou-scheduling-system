@@ -8,8 +8,9 @@ import { ErrorField } from "../components/FormsResister/validationError";
 import { getAdminUser } from "../controllers/getadminusers";
 import { authenticationStore, type AdminUserDetails } from "../store/adminstore";
 import { Home } from "./home";
-import logo from './../assets/logo.png'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ButtonForms } from "../components/FormsResister/Button";
+import { HeaderForms } from "../components/FormsResister/HeaderForms";
 
 
 
@@ -77,60 +78,59 @@ export const Login = () => {
 
       <section className=" w-full h-full grid place-content-center px-4 pt-8">
 
-        <header className="flex h-24 flex-col gap-4">
-          <figure>
-            <img src={logo} alt="" className="w-[128px]" />
-          </figure>
-          <section className="flex flex-col gap-[4px]">
-            <h2 className="font-bold text-[16px] text-zinc-900">Acessar sua conta</h2>
-            <p className="text-zinc-500 text-[14px]">Digite seu email e senha para acessar a plataforma.
-            </p>
-          </section>
-        </header>
+          <HeaderForms title="Acessar sua conta" subtitle="Digite seu email e senha para acessar a plataforma." />
+
+
         <form action=""
-          className="flex flex-col py-10 gap-4"
+          className="flex flex-col py-10 gap-[32px]"
           onSubmit={handleSubmit(onSubmit)}
         >
 
+          <section className="flex flex-col gap-2">
 
-          <FieldSet
-            labelDescription="Digite o seu Email"
-            inputType="text"
-            currentValue={values.email || undefined}
-            currentId="email"
-            currentPlaceHolder="Digite o seu email"
-            handleForminput={handleFormValues}
-            register={register}
-          />
+            <FieldSet
+              labelDescription="*Email"
+              inputType="text"
+              currentValue={values.email || undefined}
+              currentId="email"
+              currentPlaceHolder="Digite o seu email"
+              handleForminput={handleFormValues}
+              register={register}
+            />
 
-          {
-            errors.email && <ErrorField>
-              {errors.email.message}
-            </ErrorField>
-          }
+            {
+              errors.email && <ErrorField>
+                {errors.email.message}
+              </ErrorField>
+            }
 
 
 
-          <FieldSet
-            labelDescription="Defina uma Senha"
-            inputType="text"
-            currentValue={values.password || undefined}
-            currentId="password"
-            currentPlaceHolder="Criar Senha"
-            handleForminput={handleFormValues}
-            register={register}
-          />
+            <FieldSet
+              labelDescription="*Senha"
+              inputType="text"
+              currentValue={values.password || undefined}
+              currentId="password"
+              currentPlaceHolder="Criar Senha"
+              handleForminput={handleFormValues}
+              register={register}
+            />
 
-          {
-            errors.password && <ErrorField>
-              {errors.password.message}
-            </ErrorField>
-          }
+            {
+              errors.password && <ErrorField>
+                {errors.password.message}
+              </ErrorField>
+            }
+          </section>
 
-          <button className="px-2 py-2 bg-slate-600 rounded-sm" type="submit">
-            Cadastrar
-          </button>
+          <ButtonForms actiontext="Entrar" />
         </form>
+
+        <section className="flex flex-col gap-[4px]">
+          <p className="text-zinc-500 text-[14px] font-primary-outfit leading-[16px]">
+            Ainda não tem login ? <Link to={"/cadastro"} title="link para área de Cadastro" role="cadastro" aria-label="link de Cadastro" className="font-bold">Cadastre-se</Link>
+            </p>
+        </section>
       </section>
 
 

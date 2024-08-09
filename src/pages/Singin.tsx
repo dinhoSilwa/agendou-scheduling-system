@@ -6,6 +6,8 @@ import type { AdminUserProps } from "../@types/formsTypes";
 import React, { useState } from "react";
 import { ErrorField } from "../components/FormsResister/validationError";
 import { createAdminUser } from "../controllers/creatadminuser";
+import { ButtonForms } from "../components/FormsResister/Button";
+import { HeaderForms } from "../components/FormsResister/HeaderForms";
 
 export const Sing = () => {
 
@@ -60,11 +62,13 @@ export const Sing = () => {
 
   return (
     <>
-  
+<section className="pt-10 px-4">
+<HeaderForms title="Criar Conta" subtitle="Adicione os seu dados Para criar a sua conta" />
       <form action=""
-        className="flex flex-col w-1/2"
+        className="flex flex-col gap-4 mt-4"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <section className="flex gap-3 flex-col">
         <FieldSet
           labelDescription="Digite o seu nome"
           inputType="text"
@@ -129,12 +133,12 @@ export const Sing = () => {
           </ErrorField>
         }
 
-        <button className="px-2 py-2 bg-green-600" type="submit">
-          Cadastrar
-        </button>
+        </section>
+        <ButtonForms actiontext="Cadastrar" />
       </form>
 
       {status}
+</section>
     </>
   )
 }
