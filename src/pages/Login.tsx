@@ -11,14 +11,14 @@ import { Home } from "./home";
 import { Link, useNavigate } from "react-router-dom";
 import { ButtonForms } from "../components/FormsResister/Button";
 import { HeaderForms } from "../components/FormsResister/HeaderForms";
+import { LoadingPage } from "./loading";
 
 
 
 export const Login = () => {
   const { add, adminDetails, deleteAdmin } = authenticationStore()
   const navigate = useNavigate()
-  console.log(adminDetails)
-
+const [isLoading, setisLoading] = useState(false)
   useEffect(() => {
     deleteAdmin()
   }, [])
@@ -43,10 +43,14 @@ export const Login = () => {
 
   const onSubmit = async (data: AdminUserLoginProps) => {
 
+    setisLoading(true)
+
     await getAdminUser(data).then((res) => {
       const dbData: AdminUserDetails = res.data
       const { adminName, adminEmail } = dbData
       add(adminName, adminEmail)
+      setisLoading(false)
+
       navigate('/home')
     }
     )
@@ -72,8 +76,11 @@ export const Login = () => {
   }
 
 
+
   return (
     <>
+
+ <LoadingPage />
 
 
       <section className=" w-full h-full grid place-content-center px-4 pt-8">
@@ -86,7 +93,7 @@ export const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
 
-          <section className="flex flex-col gap-2">
+          <section className="flex flex-col gap-4">
 
             <FieldSet
               labelDescription="*Email"
