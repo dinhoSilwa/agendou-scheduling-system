@@ -28,7 +28,7 @@ export const FieldSet = ({
   ...props
 }: FieldSetFormsProps) => {
   return (
-    <fieldset {...props} className="flex flex-col gap-[8px]">
+    <fieldset {...props} className="flex flex-col gap-[2px]">
       <label 
       title="Campos Marcados com (*) são Obrigatórios"
       htmlFor={currentId}
